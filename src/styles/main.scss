@@ -34,6 +34,7 @@ $week: ("mon": 1, "tue": 2, "wed": 3, "thu": 4, "fri": 5, "sat": 6, "sun": 7);
       transform: translateY(-20px);
       transition: all 0.2s ease-out;
     }
+
     @for $i from 1 through 31 {
       &:nth-child(#{$i}) {
         &::before {
@@ -41,18 +42,13 @@ $week: ("mon": 1, "tue": 2, "wed": 3, "thu": 4, "fri": 5, "sat": 6, "sun": 7);
         }
       }
     }
+
   }
-  &-28 > div:nth-child(-n+28) {
-    display: block;
-  }
-  &-29 > div:nth-child(-n+29) {
-    display: block;
-  }
-  &-30 > div:nth-child(-n+30) {
-    display: block;
-  }
-  &-31 > div:nth-child(-n+31) {
-    display: block;
+
+  @for $i from 28 through 31 {
+    &-#{$i} > div:nth-child(-n+#{$i}) {
+      display: block;
+    }
   }
 
   @each $week-day, $day-start in $week {
@@ -60,4 +56,5 @@ $week: ("mon": 1, "tue": 2, "wed": 3, "thu": 4, "fri": 5, "sat": 6, "sun": 7);
       grid-column-start: $day-start;
     }
   }
+
 }
