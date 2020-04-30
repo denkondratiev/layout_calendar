@@ -32,20 +32,16 @@ $week: ("mon": 1, "tue": 2, "wed": 3, "thu": 4, "fri": 5, "sat": 6, "sun": 7);
       cursor: pointer;
       background-color: #ffbfcb;
       transform: translateY(-20px);
-      transition: all 0.2s ease-out;
     }
+  }
 
-    @for $i from 1 through 31 {
-      &:nth-child(#{$i}) {
-        &::before {
-          content: "#{$i}";
-        }
+  @for $i from 1 through 31 {
+    div:nth-child(#{$i}) {
+      &::before {
+        content: "#{$i}";
       }
     }
 
-  }
-
-  @for $i from 28 through 31 {
     &-#{$i} > div:nth-child(-n+#{$i}) {
       display: block;
     }
